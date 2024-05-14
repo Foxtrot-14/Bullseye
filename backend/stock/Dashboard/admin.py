@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import TrackedStock
 
-# Register your models here.
+class TrackedStockAdmin(admin.ModelAdmin):
+    list_display = ('symbol', 'adder',)
+
+admin.site.register(TrackedStock, TrackedStockAdmin)
