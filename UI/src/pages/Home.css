@@ -1,0 +1,61 @@
+.hmain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fmain {
+  height: max-content;
+}
+.cmain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.htitle {
+  font-family: "Jaro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 100px;
+  font-style: normal;
+}
+.quick {
+  font-family: "Jaro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 35px;
+  font-style: normal;
+}
+.mback {
+  height: 400px;
+}
+.quickin {
+  background-color: #b4b7bb;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  height: 45px;
+  padding: 5px 5px;
+  width: 1000px;
+  font-family: "Jaro", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+.but {
+  margin: 15px;
+  width: 90px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #e2951d;
+  font-family: "Jaro", sans-serif;
+  font-size: 20px;
+}
+.but:hover {
+  cursor: pointer;
+}
+.res {
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}

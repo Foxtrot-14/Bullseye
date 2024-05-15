@@ -1,0 +1,18 @@
+.card {
+  height: 100px;
+  width: 300px;
+  background-color: #b4b7bb;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  margin: 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sub{
+    font-family: "jaro", sans-serif;
+}
+.carb{
+    font-size: large;
+}
