@@ -1,4 +1,5 @@
-# Stock-Symbol-Dashboard
+# Bullseye
+
 This is a web application that allows users to create and manage their own watchlists of stock symbols. Users can view the latest stock values of the symbols on their watchlist through a dashboard. The platform can handle multiple users concurrently, each having different watchlists. It uses a database to store user and watchlist data and a secure authentication mechanism for user authentication.
 
 ## Features
@@ -20,25 +21,33 @@ This is a web application that allows users to create and manage their own watch
 ## Front-end Setup
 
 1. **Clone the repository:**
+
 ```
 https://github.com/Foxtrot-14/Stock-Symbol-Dashboard.git
 ```
 
 2. **Navigate to the React Project:**
+
 ```
 cd Stock-Symbol-Dashboard/UI
 ```
+
 3. **Install Dependencies:**
+
 ```
 npm install
 ```
+
 4. **Run React App:**
+
 ```
 npm run dev
 ```
+
 ## Back-end Setup
 
 1. **Navigate to Django Project:**
+
 ```
 cd Stock-Symbol-Dashboard/backend
 ```
