@@ -23,13 +23,13 @@ This is a web application that allows users to create and manage their own watch
 1. **Clone the repository:**
 
 ```
-https://github.com/Foxtrot-14/Stock-Symbol-Dashboard.git
+https://github.com/Foxtrot-14/Bullseye.git
 ```
 
 2. **Navigate to the React Project:**
 
 ```
-cd Stock-Symbol-Dashboard/UI
+cd Bullseye/UI
 ```
 
 3. **Install Dependencies:**
@@ -49,5 +49,5 @@ npm run dev
 1. **Navigate to Django Project:**
 
 ```
-cd Stock-Symbol-Dashboard/backend
+cd Bullseye/backend
 ```

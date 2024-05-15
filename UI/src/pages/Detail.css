@@ -1,0 +1,16 @@
+.dmain {
+  height: 100vh;
+  background-color: #e2951d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dcon {
+  height: 500px;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #b4b7bb;
+}

@@ -1,7 +1,13 @@
-const Detail = () => {
+import React from "react";
+import "./Detail.css"
+const Detail: React.FC = () => {
   return (
     <main>
-      <h1>Detail</h1>
+      <article className="dmain">
+        <section className="dcon">
+          <h1>Test</h1>
+        </section>
+      </article>
     </main>
   );
 };
