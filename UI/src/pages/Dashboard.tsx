@@ -1,5 +1,6 @@
 import Results from "../components/Results";
 import "./Dashboard.css";
+import dash from "../assets/dash.svg"
 const Dashboard = () => {
   const searchResults = {
     bestMatches: [
@@ -29,6 +30,7 @@ const Dashboard = () => {
   };
   return (
     <main className="dasmain">
+      <img src={dash} className="dasim" alt="" />
       <h2 className="quick">Your Dashboard</h2>
       <article className="res">
         <Results res={searchResults} />

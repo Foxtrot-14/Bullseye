@@ -1,5 +1,6 @@
 import React from "react";
 import "./Detail.css";
+import back from "../assets/detail.svg";
 const Detail: React.FC = () => {
   const searchResults = {
     "1. symbol": "AAPL",
@@ -30,6 +31,7 @@ const Detail: React.FC = () => {
   return (
     <main>
       <article className="dmain">
+        <img className="deimg" src={back} alt="logo" />
         <section className="dcon">
           <h2 className="dquick">
             <span className="quick">Name: </span>
@@ -52,13 +54,17 @@ const Detail: React.FC = () => {
             {formattedMarketHours}
           </h2>
           <h2 className="dquick">
-            <span className="quick">Currency hours: </span>
+            <span className="quick">Currency: </span>
             {currency}
           </h2>
           <h2 className="dquick">
             <span className="quick">Match Score: </span>
             {matchScore}
           </h2>
+          <section>
+            <button className="log">Add</button>
+            <button className="log">Delete</button>
+          </section>
         </section>
       </article>
     </main>

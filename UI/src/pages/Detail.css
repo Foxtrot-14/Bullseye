@@ -22,3 +22,9 @@
   font-weight: 100;
   font-size: 30px;
 }
+.deimg{
+  position: absolute;
+  height: 140px;
+  top: 100px;
+  left: 300px;
+}

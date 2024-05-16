@@ -6,3 +6,9 @@
   height: 100vh;
   background-color: #e2951d;
 }
+.dasim{
+  height: 100px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}

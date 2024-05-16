@@ -2,7 +2,12 @@ import React from "react";
 import "./Home.css";
 import back from "../assets/undraw_investing_re_bov7.svg";
 import Results from "../components/Results";
+import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+  const login = () => {
+    navigate("/login");
+  };
   //#e2951d--primary
   //#020f11--secondary
   const searchResults = {
@@ -33,6 +38,9 @@ const Home: React.FC = () => {
   };
   return (
     <main className="hmain">
+      <button className="log hlog" onClick={login}>
+        Login
+      </button>
       <article className="cmain">
         <h1 className="htitle">Bullseye </h1>
         <img src={back} alt="back" className="mback" />
