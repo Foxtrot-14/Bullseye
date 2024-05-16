@@ -51,3 +51,15 @@ npm run dev
 ```
 cd Bullseye/backend
 ```
+2. **Install Dependencies Using the Requirements file:**
+```
+pip install -r requirements.txt
+```
+3. **Move to main project:**
+```
+cd stock
+```
+4. **Run the project:**
+```
+python manage.py runserver 8080
+```
