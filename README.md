@@ -23,7 +23,7 @@ This is a web application that allows users to create and manage their own watch
 1. **Clone the repository:**
 
 ```
-https://github.com/Foxtrot-14/Bullseye.git
+git clone https://github.com/Foxtrot-14/Bullseye.git
 ```
 
 2. **Navigate to the React Project:**
