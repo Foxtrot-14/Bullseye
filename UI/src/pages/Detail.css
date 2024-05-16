@@ -7,10 +7,18 @@
 }
 .dcon {
   height: 500px;
-  width: 700px;
+  width: 800px;
   display: flex;
+  padding: 30px;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
   background-color: #b4b7bb;
+}
+.dquick {
+  font-family: "Roboto Slab", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-size: 30px;
 }
