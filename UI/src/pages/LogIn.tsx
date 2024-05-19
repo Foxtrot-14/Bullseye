@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../Request";
@@ -8,16 +8,9 @@ const Auth: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<JSON>();
-  useEffect(() => {
-    const x = localStorage.getItem("access");
-    if (x !== null) {
-      navigate("/dashboard");
-    }
-  });
+  const [error, setError] = useState<string | null>(null);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       const result = await axiosInstance.request({
         url: "auth/login/",
@@ -27,13 +20,11 @@ const Auth: React.FC = () => {
           password: password,
         },
       });
-
-      localStorage.setItem("access", result.data.token.access);
-      localStorage.setItem("refresh", result.data.token.refresh);
+      localStorage.setItem("access", result.data.access);
+      localStorage.setItem("refresh", result.data.refresh);
       navigate("/dashboard");
-    } catch (error) {
-      console.log(error.response.data);
-      setError(error.response.data);
+    } catch (error: any) {
+      setError(error.response.data.error || "An unexpected error occurred");
     }
   };
   return (
@@ -45,7 +36,7 @@ const Auth: React.FC = () => {
             <h1 className="quick">Log In</h1>
             <form onSubmit={handleSubmit}>
               <input
-                className="ainp"
+                className="lo ainp"
                 type="email"
                 required
                 value={email}
@@ -54,7 +45,7 @@ const Auth: React.FC = () => {
               />
               <br />
               <input
-                className="ainp"
+                className="lo ainp"
                 type="password"
                 required
                 value={password}

@@ -34,6 +34,9 @@
   font-size: 15px;
   font-weight: normal;
 }
+.lo{
+  margin: 5px;
+}
 .log {
   margin: 5px;
   width: 90px;
@@ -45,4 +48,10 @@
 }
 .log:hover {
   cursor: pointer;
+}
+.error-message{
+  margin-top: 35px;
+  font-weight: bold;
+  align-self: center;
+  color: red;
 }
