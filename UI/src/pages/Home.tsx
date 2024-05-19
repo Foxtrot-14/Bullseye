@@ -1,41 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import back from "../assets/undraw_investing_re_bov7.svg";
 import Results from "../components/Results";
+import axiosInstance from "../Request";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+interface Match {
+  "1. symbol": string;
+  "2. name": string;
+  "3. type": string;
+  "4. region": string;
+  "5. marketOpen": string;
+  "6. marketClose": string;
+  "7. timezone": string;
+  "8. currency": string;
+  "9. matchScore": string;
+}
+type SearchResult = Match[];
 const Home: React.FC = () => {
+  const [data, setData] = useState<SearchResult | null>(null);
   const navigate = useNavigate();
+  const [keyword, setKeyword] = useState<string>("");
   const login = () => {
     navigate("/login");
   };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const result = await axiosInstance.request({
+        url: `dashboard/search/${keyword}`,
+        method: "get",
+      });
+      setData(result.data.data.bestMatches);
+      console.log(result.data.data.bestMatches);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        // Handle known Axios error
+        console.error("Axios error message:", error.message);
+        if (error.response) {
+          // Server responded with a status code outside 2xx
+          console.error("Response data:", error.response.data);
+          console.error("Response status:", error.response.status);
+          console.error("Response headers:", error.response.headers);
+        } else if (error.request) {
+          // No response was received
+          console.error("Request made but no response received", error.request);
+        } else {
+          // Something happened in setting up the request
+          console.error("Error setting up request:", error.message);
+        }
+      } else {
+        // Handle other errors
+        console.error("Unexpected error:", error);
+      }
+    }
+  };
   //#e2951d--primary
   //#020f11--secondary
-  const searchResults = {
-    bestMatches: [
-      {
-        "1. symbol": "AAPL",
-        "2. name": "Apple Inc.",
-        "3. type": "Equity",
-        "4. region": "United States",
-        "5. marketOpen": "09:30",
-        "6. marketClose": "16:00",
-        "7. timezone": "UTC-04",
-        "8. currency": "USD",
-        "9. matchScore": "1.0000",
-      },
-      {
-        "1. symbol": "AAPL34.SAO",
-        "2. name": "Apple Inc.",
-        "3. type": "Equity",
-        "4. region": "Brazil/Sao Paolo",
-        "5. marketOpen": "10:00",
-        "6. marketClose": "17:30",
-        "7. timezone": "UTC-03",
-        "8. currency": "BRL",
-        "9. matchScore": "0.8000",
-      },
-    ],
-  };
   return (
     <main className="hmain">
       <button className="log hlog" onClick={login}>
@@ -47,17 +68,30 @@ const Home: React.FC = () => {
       </article>
       <article className="fmain">
         <h2 className="quick">Search for a Stock</h2>
-        <input className="quickin" type="text" name="quick" id="quickIn" />
+        <form onSubmit={handleSubmit}>
+          <input
+            className="quickin"
+            value={keyword}
+            type="text"
+            name="quick"
+            id="quickIn"
+            onChange={(e) => {
+              setKeyword(e.target.value);
+            }}
+            placeholder="Enter your keyword"
+          />
+          <button type="submit" className="but">
+            Search
+          </button>
+        </form>
       </article>
-      <button className="but">Search</button>
       <article className="res">
-        <Results res={searchResults} />
-        <Results res={searchResults} />
-        <Results res={searchResults} />
-        <Results res={searchResults} />
-        <Results res={searchResults} />
-        <Results res={searchResults} />
-        <Results res={searchResults} />
+        {data &&
+          data.map((data) => {
+            return (
+              <Results name={data["2. name"]} symbol={data["1. symbol"]} />
+            );
+          })}
       </article>
     </main>
   );

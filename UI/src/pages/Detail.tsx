@@ -1,33 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Detail.css";
+import axiosInstance from "../Request";
+import { useParams } from "react-router-dom";
 import back from "../assets/detail.svg";
+interface RouteParams {
+  keyword: string;
+}
 const Detail: React.FC = () => {
-  const searchResults = {
-    "1. symbol": "AAPL",
-    "2. name": "Apple Inc.",
-    "3. type": "Equity",
-    "4. region": "United States",
-    "5. marketOpen": "09:30",
-    "6. marketClose": "16:00",
-    "7. timezone": "UTC-04",
-    "8. currency": "USD",
-    "9. matchScore": "1.0000",
+  const { keyword } = useParams<RouteParams>();
+  const [searchResults, setSearchResults] = useState<any | null>(null);
+  const onLoad = async () => {
+    try {
+      const result = await axiosInstance.request({
+        url: `dashboard/detail/${keyword}`,
+        method: "get",
+      });
+      setSearchResults(result.data);
+    } catch (error: any) {}
   };
-  const {
-    "1. symbol": symbol,
-    "2. name": name,
-    "3. type": type,
-    "4. region": region,
-    "5. marketOpen": marketOpen,
-    "6. marketClose": marketClose,
-    "7. timezone": timezone,
-    "8. currency": currency,
-    "9. matchScore": matchScore,
-  } = searchResults || {};
-  const formattedMarketHours = `${marketOpen} - ${marketClose} ${
-    timezone || "Unknown Timezone"
-  }`;
-
+  useEffect(() => {
+    onLoad();
+  }, []);
+  console.log(searchResults);
   return (
     <main>
       <article className="dmain">
@@ -50,8 +44,12 @@ const Detail: React.FC = () => {
             {region}
           </h2>
           <h2 className="dquick">
-            <span className="quick">Market hours: </span>
-            {formattedMarketHours}
+            <span className="quick">Market Open: </span>
+            {marketOpen}
+          </h2>
+          <h2 className="dquick">
+            <span className="quick">Market Close: </span>
+            {marketClose}
           </h2>
           <h2 className="dquick">
             <span className="quick">Currency: </span>
@@ -70,5 +68,4 @@ const Detail: React.FC = () => {
     </main>
   );
 };
-
 export default Detail;
