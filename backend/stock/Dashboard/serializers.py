@@ -4,4 +4,4 @@ from .models import TrackedStock
 class TrackedStockSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackedStock
-        fields = ['symbol', 'adder']
+        fields = ['symbol','name', 'adder']

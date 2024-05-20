@@ -32,7 +32,6 @@ const Home: React.FC = () => {
         method: "get",
       });
       setData(result.data.data.bestMatches);
-      console.log(result.data.data.bestMatches);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         // Handle known Axios error

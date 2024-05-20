@@ -8,7 +8,7 @@ interface ResultsProps {
 const Results: React.FC<ResultsProps> = ({ name, symbol }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/detail/${symbol}`);
+    navigate(`/detail?data=${symbol}`);
   };
   return (
     <article className="card">

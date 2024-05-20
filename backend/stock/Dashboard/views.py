@@ -8,7 +8,6 @@ import os
 from asgiref.sync import async_to_sync
 from .models import TrackedStock
 from .serializers import TrackedStockSerializer
-key = os.getenv('API_KEY')
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def my_watchlist(request):

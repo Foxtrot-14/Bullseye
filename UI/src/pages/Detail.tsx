@@ -1,22 +1,42 @@
 import React, { useEffect, useState } from "react";
 import "./Detail.css";
 import axiosInstance from "../Request";
-import { useParams } from "react-router-dom";
-import back from "../assets/detail.svg";
-interface RouteParams {
-  keyword: string;
-}
+// import back from "../assets/detail.svg";
+import axios from "axios";
+
 const Detail: React.FC = () => {
-  const { keyword } = useParams<RouteParams>();
+  const params = new URLSearchParams(window.location.search);
+  const keyword: string | null = params.get("data");
   const [searchResults, setSearchResults] = useState<any | null>(null);
+  console.log(keyword);
   const onLoad = async () => {
     try {
       const result = await axiosInstance.request({
-        url: `dashboard/detail/${keyword}`,
+        url: `/dashboard/detail/AAPL`,
         method: "get",
       });
-      setSearchResults(result.data);
-    } catch (error: any) {}
+      setSearchResults(result.data.data);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        // Handle known Axios error
+        console.error("Axios error message:", error.message);
+        if (error.response) {
+          // Server responded with a status code outside 2xx
+          console.error("Response data:", error.response.data);
+          console.error("Response status:", error.response.status);
+          console.error("Response headers:", error.response.headers);
+        } else if (error.request) {
+          // No response was received
+          console.error("Request made but no response received", error.request);
+        } else {
+          // Something happened in setting up the request
+          console.error("Error setting up request:", error.message);
+        }
+      } else {
+        // Handle other errors
+        console.error("Unexpected error:", error);
+      }
+    }
   };
   useEffect(() => {
     onLoad();
@@ -24,47 +44,47 @@ const Detail: React.FC = () => {
   console.log(searchResults);
   return (
     <main>
-      <article className="dmain">
+      {/* <article className="dmain">
         <img className="deimg" src={back} alt="logo" />
         <section className="dcon">
           <h2 className="dquick">
             <span className="quick">Name: </span>
-            {name}
+            {searchResults.name}
           </h2>
           <h2 className="dquick">
             <span className="quick">Symbol: </span>
-            {symbol}
+            {searchResults.symbol}
           </h2>
           <h2 className="dquick">
             <span className="quick">Type: </span>
-            {type}
+            {searchResults.type}
           </h2>
           <h2 className="dquick">
             <span className="quick">Region: </span>
-            {region}
+            {searchResults.region}
           </h2>
           <h2 className="dquick">
             <span className="quick">Market Open: </span>
-            {marketOpen}
+            {searchResults.marketOpen}
           </h2>
           <h2 className="dquick">
             <span className="quick">Market Close: </span>
-            {marketClose}
+            {searchResults.marketClose}
           </h2>
           <h2 className="dquick">
             <span className="quick">Currency: </span>
-            {currency}
+            {searchResults.currency}
           </h2>
           <h2 className="dquick">
             <span className="quick">Match Score: </span>
-            {matchScore}
+            {searchResults.matchScore}
           </h2>
           <section>
             <button className="log">Add</button>
             <button className="log">Delete</button>
           </section>
         </section>
-      </article>
+      </article> */}
     </main>
   );
 };
