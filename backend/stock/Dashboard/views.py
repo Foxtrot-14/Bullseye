@@ -11,6 +11,7 @@ from .serializers import TrackedStockSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def my_watchlist(request):
+    print(request.headers)
     user = request.user
     data = TrackedStock.objects.filter(adder=user)
     if data.exists():

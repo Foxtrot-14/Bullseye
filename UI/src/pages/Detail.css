@@ -6,25 +6,26 @@
   align-items: center;
 }
 .dcon {
-  height: 500px;
+  height: 600px;
   width: 800px;
   display: flex;
-  padding: 30px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding-left: 90px;
   border-radius: 15px;
   background-color: #b4b7bb;
+  overflow: hidden;
 }
-.dquick {
-  font-family: "Roboto Slab", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-size: 30px;
+.de{
+  font-size: large;
+}
+.mainde{
+  display: flex;
+  justify-content: center;
 }
 .deimg{
   position: absolute;
-  height: 140px;
+  height: 120px;
   top: 100px;
-  left: 300px;
+  right: 400px;
 }
