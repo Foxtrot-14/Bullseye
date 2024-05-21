@@ -1,7 +1,6 @@
 .dasmain {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #e2951d;
@@ -11,4 +10,7 @@
   position: absolute;
   top: 50px;
   left: 50px;
+}
+.da{
+  margin-top: 90px;
 }

@@ -11,8 +11,8 @@ from .serializers import TrackedStockSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def my_watchlist(request):
-    print(request.headers)
     user = request.user
+    print(user)
     data = TrackedStock.objects.filter(adder=user)
     if data.exists():
         serializer = TrackedStockSerializer(data,many=True)
@@ -24,8 +24,9 @@ def my_watchlist(request):
 @permission_classes([IsAuthenticated])
 def add_stock(request):
     symb = request.data.get("symbol")
+    name = request.data.get("name")
     user = request.user
-    tracked_stock = TrackedStock(symbol=symb, adder=user)
+    tracked_stock = TrackedStock(name=name,symbol=symb, adder=user)
     try:
         tracked_stock.save()
         return Response({"message": "TrackedStock created successfully"}, status=status.HTTP_201_CREATED)

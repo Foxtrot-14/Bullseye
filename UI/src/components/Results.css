@@ -2,17 +2,31 @@
   height: 100px;
   width: 300px;
   background-color: #b4b7bb;
-  font-family: "Raleway", sans-serif;
   font-size: 15px;
   margin: 10px;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
-.sub{
+
+.sub {
   font-family: "jaro", sans-serif;
+  word-wrap: break-word;
+  text-align: center;
+  font-weight: lighter;
+  margin: 0;
 }
-.carb{
-    font-size: large;
+
+.carb {
+  font-size: large;
+  margin-top: 10px;
+}
+
+.card h4 {
+  margin: 0;
+  text-align: center;
+  word-wrap: break-word;
 }
