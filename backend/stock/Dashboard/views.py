@@ -42,3 +42,4 @@ def stock_detail(request, symb):
 def search_stock(request, keyword):
     data = asyncio.run(search(keyword))
     return Response({"data": data}, status=status.HTTP_200_OK)
+
